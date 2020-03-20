@@ -1,0 +1,104 @@
+@startuml Volunteer Portal Data Model
+
+allow_mixing
+
+class Organization {
+    int id
+    string name
+    string description
+    boolean is501c3
+    string primaryContact
+    string primaryEmail
+}
+hide Organization methods
+
+class Project {
+    int id
+    int organizationId
+    string name
+    string description
+    string size
+}
+hide Project methods
+
+class Event {
+    int id
+    int name
+    string description
+    DateTime start
+    DateTime end
+    int locationId
+}
+hide Event methods
+
+class Location {
+    int id
+    string name
+    string address
+    string city
+    string state
+    string zip
+}
+hide Location methods
+
+class User {
+    int id
+    string email
+    string fullName
+    boolean isAdmin
+    -- move to profile? --
+    string phone
+    string linkedIn
+    string company
+    string title
+    string bio
+    string shirtSize
+    string dietary // default
+    boolean approvedImageVideo // default
+    int[] roles
+    int[] level1Skills
+    int[] level2Skills
+    int[] level3Skills
+}
+hide User methods
+
+class Skill {
+    int id
+    string name
+    string description
+}
+hide Skill methods
+
+class Role {
+    int id
+    string name
+    string description
+}
+hide Role methods
+
+class Shindig {
+    int id
+    int projectId
+    int eventId
+}
+hide Shindig methods
+
+class ShindigTeam {
+    int shindigId
+    int userId
+    boolean isLead
+    string dietary
+    boolean approvedImageVideo
+}
+hide ShindigTeam methods
+
+Organization -> Project
+Project -> Shindig
+Shindig <-- Event
+Location -> Event
+Shindig -> ShindigTeam
+ShindigTeam <- User 
+User <-- Role
+User <-- Skill
+
+@enduml

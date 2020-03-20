@@ -1,0 +1,23 @@
+# Packages
+node_modules/
+.cache/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Oo]ut/
+[Dd]ist/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# React / Yarn / NPM
+npm-debug.log
+
+# IDE temp directories
+.vs/
+.vscode/
